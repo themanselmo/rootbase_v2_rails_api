@@ -3,10 +3,12 @@ class OrganizationsController < ApplicationController
 
     def create
         organization = Organization.create(org_params)   
+        
         if organization.valid?
-            owner = organization.users.create(user_params)
-            
+            owner = organization.initialize_owner(user_params)
+
             if owner.valid?
+            session[:user_token] = owner.auth_token
             session[:org_token] = organization.auth_token
 
             render json: organization, status: :created
@@ -33,12 +35,11 @@ class OrganizationsController < ApplicationController
 
     def org_params
         params.permit(
-            :name,
-            :password
+            :name
         )
     end
 
     def user_params
-        params.permit(:first_name, :last_name, :email_address)
+        params.permit(:first_name, :last_name, :email_address, :password)
     end
 end
