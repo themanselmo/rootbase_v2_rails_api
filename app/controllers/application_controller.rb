@@ -10,6 +10,6 @@ class ApplicationController < ActionController::API
     private
 
     def authorize
-        return render json: { errpr: ["Not authorized"] }, status: :unauthorized unless session.include? :org_token
+        return render json: { error: ["Not authorized"] }, status: :unauthorized unless session.include? :org_token
     end
 end 
