@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   get "/current_organization", to: "organizations#show"
-  get "/current_user", to: "user#show"
+  get "/current_user", to: "users#show"
 end

@@ -18,11 +18,14 @@ gem "puma", "~> 5.0"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
+# Active model serializer used to wrap objects into json objects
+gem 'active_model_serializers'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
@@ -42,7 +45,12 @@ group :development, :test do
 end
 
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'graphiql-rails'  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
 end
+
+gem 'graphql', '1.9.18'
 
